@@ -43,7 +43,7 @@ abstract contract BaseModule is AcrossHookReceiver, AccountEntry, AcrossSender {
     //  Constructor
     //  ─────────────────────────────────────────────────────────────────────────────
 
-    constructor(address entryPoint, address spokePool) AccountEntry(entryPoint) AcrossHookReceiver(spokePool) {
+    constructor(address entryPoint, address spokePool) AccountEntry(entryPoint) AcrossSender(spokePool) AcrossHookReceiver(spokePool) {
         // no-op
     }
 
