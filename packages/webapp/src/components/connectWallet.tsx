@@ -11,8 +11,14 @@ import {
 } from '../utils/helpers';
 import { SUPPORTED_NETWORKS } from '../utils/chains';
 import { CurrentNetworkContext } from '../Context/CurrentNetwork';
+import { useAccount, useEnsName } from 'wagmi'
+
 
 const ConnectWalletButton = () => {
+  const { address } = useAccount()
+  const { data, error, status } = useEnsName({ address })
+
+  
   const { setSigner, signer } = useContext(SignerContext);
   const { currentNetwork, setCurrentNetwork } = useContext(
     CurrentNetworkContext

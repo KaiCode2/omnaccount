@@ -14,23 +14,30 @@ import CurrentNetworkProvider, {
 
 import { ApolloProvider } from 'react-apollo';
 import { client } from '../lib/graphql/client';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query' 
+import { WagmiProvider } from 'wagmi' 
+import { config } from '@/utils/config' 
 
 const theme = createTheme({
   /** Put your mantine theme override here */
 });
 
+const queryClient = new QueryClient() 
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ApolloProvider client={client}>
-      <SignerProvider>
-        <CurrentNetworkProvider>
+      <WagmiProvider config={config}> 
+        <QueryClientProvider client={queryClient}> 
+        {/* <CurrentNetworkProvider> */}
           <MantineProvider defaultColorScheme="dark" theme={theme}>
             <Notifications position="bottom-center" />
 
             <Component {...pageProps} />
           </MantineProvider>
-        </CurrentNetworkProvider>
-      </SignerProvider>
+        {/* </CurrentNetworkProvider> */}
+        </QueryClientProvider>
+      </WagmiProvider>
     </ApolloProvider>
   );
 }
