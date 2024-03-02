@@ -128,6 +128,14 @@ const config: HardhatUserConfig = {
       deploy: ["deploy/public"],
       live: true,
     },
+    lineaGoerli: {
+      url: "https://rpc.goerli.linea.build",
+      chainId: 59140,
+      accounts,
+      saveDeployments: true,
+      deploy: ["deploy/public"],
+      live: true,
+    },
   },
   paths: {
     tests: "./test/mocha",
@@ -145,6 +153,7 @@ const config: HardhatUserConfig = {
       opSepolia: "0x4e8E101924eDE233C13e2D8622DC8aED2872d505",
       baseSepolia: "0x82B564983aE7274c86695917BBf8C99ECb6F0F8F",
       baseGoerli: "0x1F5AA71C79ec6a11FC55789ed32dAE3B64d75791",
+      lineaGoerli: "0xfa3DA25059F4ff59dA7566B58D3299dB8a04691F",
     },
     entrypoint: {
       default: 8, // TODO: Update
@@ -156,6 +165,7 @@ const config: HardhatUserConfig = {
       opSepolia: "0x4200000000000000000000000000000000000006",
       baseSepolia: "0x4200000000000000000000000000000000000006",
       baseGoerli: "0x4200000000000000000000000000000000000006",
+      lineaGoerli: "0x2c1b868d6596a18e32e61b901e4060c872647b6c",
     },
     relayer: 9,
   },
